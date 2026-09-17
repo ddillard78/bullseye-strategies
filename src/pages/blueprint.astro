@@ -1,9 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
+import ProcessMap from "../components/ProcessMap.astro";
 import { BLUEPRINT, BOOKING_URL } from "../data/site";
-import blueprintArt from "../assets/bullseye_blueprint_methodology_infographic_concept.png";
 ---
 
 <Base
@@ -20,15 +19,9 @@ import blueprintArt from "../assets/bullseye_blueprint_methodology_infographic_c
   <!-- Sticky-scroll walkthrough -->
   <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
     <div class="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
-      <div class="hidden lg:block">
-        <div class="sticky top-32 space-y-8">
-          <Image
-            src={blueprintArt}
-            alt="The five-phase Bullseye Blueprint methodology"
-            widths={[500, 800]}
-            sizes="(min-width: 1024px) 40vw, 90vw"
-            class="scroll-zoom w-full rounded-xl border border-paper-200"
-          />
+      <div>
+        <div class="space-y-8 lg:sticky lg:top-32">
+          <ProcessMap class="text-navy-900" />
           <div class="rounded-xl border border-paper-200 bg-white p-6">
             <p class="eyebrow">Typical Duration</p>
             <p class="mt-3 text-sm leading-relaxed text-navy-800/75">

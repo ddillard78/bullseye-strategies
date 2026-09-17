@@ -1,0 +1,288 @@
+---
+/**
+ * Engagement process map: a manual process becomes a repeating workflow,
+ * which then lands one of two ways — we deploy it, or we stand it up in the
+ * client's own environment and hand over the controls.
+ *
+ * Structure is drawn in `currentColor` so the figure inherits the surrounding
+ * text colour and reads correctly on both the light page background and the
+ * dark navy section. Crimson is reserved for the fork, which is the part of
+ * the picture that carries the actual claim.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<figure class={className}>
+  <svg
+    viewBox="0 0 560 740"
+    role="img"
+    aria-label="Process map: a manual process is mapped into a documented SOP, rebuilt as a repeating workflow, and then delivered either as a solution we build and deploy, or as a workflow stood up inside your own environment — both ending in a process that repeats without heroics."
+    class="h-auto w-full"
+    fill="none"
+  >
+    <defs>
+      <marker
+        id="pm-arrow"
+        viewBox="0 0 10 10"
+        refX="9"
+        refY="5"
+        markerWidth="6"
+        markerHeight="6"
+        orient="auto-start-reverse"
+      >
+        <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
+      </marker>
+      <marker
+        id="pm-arrow-accent"
+        viewBox="0 0 10 10"
+        refX="9"
+        refY="5"
+        markerWidth="6"
+        markerHeight="6"
+        orient="auto-start-reverse"
+      >
+        <path d="M0 0 L10 5 L0 10 z" fill="var(--color-crimson-500)"></path>
+      </marker>
+    </defs>
+
+    <!-- ============ 1. Manual process ============ -->
+    <rect
+      x="110"
+      y="16"
+      width="340"
+      height="86"
+      rx="10"
+      stroke="currentColor"
+      stroke-width="1.5"
+      opacity="0.55"></rect>
+    <text
+      x="130"
+      y="48"
+      font-size="15"
+      font-weight="700"
+      fill="currentColor">Manual process today</text>
+    <text x="130" y="70" font-size="11.5" fill="currentColor" opacity="0.7"
+      >Re-keyed between systems, reconciled by hand,</text
+    >
+    <text x="130" y="86" font-size="11.5" fill="currentColor" opacity="0.7"
+      >and held in one person's head.</text
+    >
+
+    <line
+      x1="280"
+      y1="102"
+      x2="280"
+      y2="140"
+      stroke="currentColor"
+      stroke-width="1.5"
+      marker-end="url(#pm-arrow)"></line>
+    <text x="292" y="126" font-size="11" fill="currentColor" opacity="0.75"
+      >map what actually happens</text
+    >
+
+    <!-- ============ 2. Documented SOP ============ -->
+    <rect
+      x="110"
+      y="146"
+      width="340"
+      height="86"
+      rx="10"
+      stroke="currentColor"
+      stroke-width="1.5"
+      opacity="0.55"></rect>
+    <text
+      x="130"
+      y="178"
+      font-size="15"
+      font-weight="700"
+      fill="currentColor">Documented SOP</text>
+    <text x="130" y="200" font-size="11.5" fill="currentColor" opacity="0.7"
+      >The process you want, not the one you</text
+    >
+    <text x="130" y="216" font-size="11.5" fill="currentColor" opacity="0.7"
+      >inherited. Decisions and controls named.</text
+    >
+
+    <line
+      x1="280"
+      y1="232"
+      x2="280"
+      y2="270"
+      stroke="currentColor"
+      stroke-width="1.5"
+      marker-end="url(#pm-arrow)"></line>
+    <text x="292" y="256" font-size="11" fill="currentColor" opacity="0.75"
+      >automate what repeats</text
+    >
+
+    <!-- ============ 3. Repeating workflow ============ -->
+    <rect
+      x="110"
+      y="276"
+      width="340"
+      height="92"
+      rx="10"
+      stroke="currentColor"
+      stroke-width="2"></rect>
+    <text
+      x="130"
+      y="308"
+      font-size="15"
+      font-weight="700"
+      fill="currentColor">Repeating workflow</text>
+    <text x="130" y="330" font-size="11.5" fill="currentColor" opacity="0.7"
+      >Defined inputs, rules, and checks &mdash; producing</text
+    >
+    <text x="130" y="346" font-size="11.5" fill="currentColor" opacity="0.7"
+      >an output that survives being run twice.</text
+    >
+
+    <!-- ============ Fork ============ -->
+    <line
+      x1="280"
+      y1="368"
+      x2="280"
+      y2="402"
+      stroke="var(--color-crimson-500)"
+      stroke-width="2"></line>
+    <path
+      d="M280 402 H140 V436"
+      stroke="var(--color-crimson-500)"
+      stroke-width="2"
+      marker-end="url(#pm-arrow-accent)"></path>
+    <path
+      d="M280 402 H420 V436"
+      stroke="var(--color-crimson-500)"
+      stroke-width="2"
+      marker-end="url(#pm-arrow-accent)"></path>
+    <text
+      x="280"
+      y="428"
+      font-size="11"
+      font-weight="600"
+      text-anchor="middle"
+      fill="var(--color-crimson-500)">two ways to land it</text
+    >
+
+    <!-- ============ 4a. We deploy it ============ -->
+    <rect
+      x="16"
+      y="444"
+      width="248"
+      height="132"
+      rx="10"
+      stroke="var(--color-crimson-500)"
+      stroke-width="1.5"></rect>
+    <text
+      x="36"
+      y="470"
+      font-size="9.5"
+      font-weight="700"
+      letter-spacing="1.2"
+      fill="var(--color-crimson-500)">OPTION A</text>
+    <text
+      x="36"
+      y="494"
+      font-size="14"
+      font-weight="700"
+      fill="currentColor">We build and deploy</text>
+    <text x="36" y="518" font-size="11" fill="currentColor" opacity="0.7"
+      >Built with Claude Code and</text
+    >
+    <text x="36" y="534" font-size="11" fill="currentColor" opacity="0.7"
+      >shipped to Render or your own</text
+    >
+    <text x="36" y="550" font-size="11" fill="currentColor" opacity="0.7"
+      >infrastructure. You get a</text
+    >
+    <text x="36" y="566" font-size="11" fill="currentColor" opacity="0.7"
+      >running system.</text
+    >
+
+    <!-- ============ 4b. You run it ============ -->
+    <rect
+      x="296"
+      y="444"
+      width="248"
+      height="132"
+      rx="10"
+      stroke="var(--color-crimson-500)"
+      stroke-width="1.5"></rect>
+    <text
+      x="316"
+      y="470"
+      font-size="9.5"
+      font-weight="700"
+      letter-spacing="1.2"
+      fill="var(--color-crimson-500)">OPTION B</text>
+    <text
+      x="316"
+      y="494"
+      font-size="14"
+      font-weight="700"
+      fill="currentColor">You run it in-house</text>
+    <text x="316" y="518" font-size="11" fill="currentColor" opacity="0.7"
+      >Stood up in your environment,</text
+    >
+    <text x="316" y="534" font-size="11" fill="currentColor" opacity="0.7"
+      >with the prompts and workflows</text
+    >
+    <text x="316" y="550" font-size="11" fill="currentColor" opacity="0.7"
+      >for the first stage your team</text
+    >
+    <text x="316" y="566" font-size="11" fill="currentColor" opacity="0.7"
+      >should tackle.</text
+    >
+
+    <!-- ============ Converge ============ -->
+    <path
+      d="M140 576 V612 H280"
+      stroke="currentColor"
+      stroke-width="1.5"
+      opacity="0.55"></path>
+    <path
+      d="M420 576 V612 H280"
+      stroke="currentColor"
+      stroke-width="1.5"
+      opacity="0.55"></path>
+    <line
+      x1="280"
+      y1="612"
+      x2="280"
+      y2="642"
+      stroke="currentColor"
+      stroke-width="1.5"
+      marker-end="url(#pm-arrow)"></line>
+
+    <!-- ============ 5. Outcome ============ -->
+    <rect
+      x="110"
+      y="648"
+      width="340"
+      height="76"
+      rx="10"
+      stroke="currentColor"
+      stroke-width="2"></rect>
+    <text
+      x="130"
+      y="680"
+      font-size="15"
+      font-weight="700"
+      fill="currentColor">It runs without you</text>
+    <text x="130" y="702" font-size="11.5" fill="currentColor" opacity="0.7"
+      >Same result every month. No heroics, and no</text
+    >
+    <text x="130" y="718" font-size="11.5" fill="currentColor" opacity="0.7"
+      >single point of failure wearing a headset.</text
+    >
+  </svg>
+
+  <figcaption class="mt-5 text-sm leading-relaxed opacity-70">
+    Every engagement ends one of two ways: a system we build and deploy for you,
+    or a workflow running in your own environment that your team owns outright.
+    The work up to that fork is identical.
+  </figcaption>
+</figure>

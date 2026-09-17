@@ -2,8 +2,8 @@
 import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import { SERVICES, INDUSTRIES, BLUEPRINT, BOOKING_URL } from "../data/site";
+import ProcessMap from "../components/ProcessMap.astro";
 import hero from "../assets/hero_executives_teaching.png";
-import blueprintArt from "../assets/bullseye_blueprint_methodology_infographic_concept.png";
 
 // Every figure below is traceable to a specific engagement in Douglas's CV.
 // Labels state the baseline so the number cannot be read as more than it is.
@@ -210,15 +210,9 @@ const stats = [
       </div>
 
       <div class="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-        <div class="hidden lg:block">
-          <div class="sticky top-32">
-            <Image
-              src={blueprintArt}
-              alt="The five-phase Bullseye Blueprint methodology"
-              widths={[500, 800]}
-              sizes="(min-width: 1024px) 40vw, 90vw"
-              class="scroll-zoom w-full rounded-xl border border-white/10"
-            />
+        <div>
+          <div class="lg:sticky lg:top-32">
+            <ProcessMap class="text-white" />
           </div>
         </div>
 
