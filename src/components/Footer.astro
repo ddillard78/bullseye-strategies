@@ -1,0 +1,91 @@
+---
+import Logo from "./Logo.astro";
+import { CONTACT, NAV, BOOKING_URL } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="rings bg-navy-950 text-slate-350">
+  <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+    <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <Logo />
+        <p class="mt-5 max-w-sm text-sm leading-relaxed">
+          Fractional CFO leadership, ERP implementation, and operational
+          discipline for mid-market companies that have outgrown their systems.
+        </p>
+        <p
+          class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-white"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-crimson-500"></span>
+          Certified DOBE&reg;
+        </p>
+      </div>
+
+      <nav aria-label="Footer">
+        <h2
+          class="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white"
+        >
+          Navigate
+        </h2>
+        <ul class="mt-5 space-y-3 text-sm">
+          {
+            NAV.map((item) => (
+              <li>
+                <a class="link-underline hover:text-white" href={item.href}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <h2
+          class="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white"
+        >
+          Contact
+        </h2>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li>
+            <a
+              class="link-underline hover:text-white"
+              href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a
+            >
+          </li>
+          <li>
+            <a class="link-underline hover:text-white" href={CONTACT.phoneHref}
+              >{CONTACT.phone}</a
+            >
+          </li>
+          <li>{CONTACT.location}</li>
+          <li>
+            <a
+              class="link-underline hover:text-white"
+              href={CONTACT.linkedin}
+              target="_blank"
+              rel="noopener">LinkedIn</a
+            >
+          </li>
+        </ul>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener"
+          class="mt-6 inline-block rounded-full bg-crimson-500 px-5 py-2.5 text-[0.75rem] font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-crimson-600"
+          >Book a Call</a
+        >
+      </div>
+    </div>
+
+    <div
+      class="mt-14 flex flex-col gap-3 border-t border-white/10 pt-7 text-xs sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>&copy; {year} Bullseye Strategies, LLC. All rights reserved.</p>
+      <p>
+        Certified Disability-Owned Business Enterprise &mdash; Disability:IN
+        Certificate US01708
+      </p>
+    </div>
+  </div>
+</footer>

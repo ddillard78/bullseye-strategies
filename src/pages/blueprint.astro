@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { BLUEPRINT, BOOKING_URL } from "../data/site";
+import blueprintArt from "../assets/bullseye_blueprint_methodology_infographic_concept.png";
+---
+
+<Base
+  title="The Bullseye Blueprint | Our Consulting Methodology"
+  description="A five-phase methodology — Diagnose, Architect, Implement, Optimize, Scale — that aligns financial goals with operational reality and system capability."
+  path="/blueprint"
+>
+  <PageHero
+    eyebrow="The Methodology"
+    title="The Bullseye Blueprint"
+    lede="Financial strategy cannot exist in a vacuum. Five phases, run in order, each producing something you keep whether or not you continue."
+  />
+
+  <!-- Sticky-scroll walkthrough -->
+  <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+      <div class="hidden lg:block">
+        <div class="sticky top-32 space-y-8">
+          <Image
+            src={blueprintArt}
+            alt="The five-phase Bullseye Blueprint methodology"
+            widths={[500, 800]}
+            sizes="(min-width: 1024px) 40vw, 90vw"
+            class="scroll-zoom w-full rounded-xl border border-paper-200"
+          />
+          <div class="rounded-xl border border-paper-200 bg-white p-6">
+            <p class="eyebrow">Typical Duration</p>
+            <p class="mt-3 text-sm leading-relaxed text-navy-800/75">
+              Diagnose runs two to three weeks. A full Diagnose-through-Optimize
+              cycle typically spans six to nine months, depending on system
+              complexity and how much of the work your team absorbs directly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <ol class="space-y-5">
+        {
+          BLUEPRINT.map((step) => (
+            <li
+              class="lift rounded-xl border border-paper-200 bg-white p-8 hover:border-crimson-500/40"
+              data-reveal
+            >
+              <div class="flex items-baseline gap-4">
+                <span class="font-[var(--font-display)] text-3xl font-extrabold text-crimson-500">
+                  {step.n}
+                </span>
+                <h2 class="text-2xl font-extrabold text-navy-900">
+                  {step.title}
+                </h2>
+              </div>
+              <p class="mt-4 text-[1.05rem] leading-relaxed text-navy-800/75">
+                {step.body}
+              </p>
+              <p class="mt-4 border-l-2 border-paper-200 pl-4 text-sm italic text-navy-700/70">
+                {step.detail}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="bg-navy-950 py-20 text-white sm:py-28">
+    <div class="mx-auto max-w-3xl px-5 sm:px-8" data-reveal>
+      <p class="eyebrow">Why It Is Sequenced This Way</p>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+        Skipping Diagnose is the most expensive shortcut in consulting.
+      </h2>
+      <div class="mt-7 space-y-5 leading-relaxed text-slate-350">
+        <p>
+          Nearly every failed ERP implementation we are asked to rescue skipped
+          straight to Implement. The software got configured around a process
+          nobody had mapped, using data nobody had validated, to produce reports
+          nobody had agreed on. The result is an expensive system that the
+          finance team works around rather than through.
+        </p>
+        <p>
+          Architecting before implementing costs a few weeks. Not doing it costs
+          the implementation.
+        </p>
+      </div>
+      <a
+        href={BOOKING_URL}
+        target="_blank"
+        rel="noopener"
+        class="mt-9 inline-block rounded-full bg-crimson-500 px-8 py-3.5 text-sm font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-crimson-600"
+        >Start With a Diagnosis</a
+      >
+    </div>
+  </section>
+</Base>

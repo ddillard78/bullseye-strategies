@@ -1,0 +1,34 @@
+---
+interface Props {
+  class?: string;
+  /** Show the wordmark alongside the ring mark */
+  withText?: boolean;
+}
+const { class: className = "", withText = true } = Astro.props;
+---
+
+<span class={`inline-flex items-center gap-3 ${className}`}>
+  <svg
+    viewBox="0 0 64 64"
+    role="img"
+    aria-label="Bullseye Strategies"
+    class="h-9 w-9 shrink-0"
+  >
+    <circle cx="32" cy="32" r="30" fill="var(--color-maroon-600)" />
+    <circle cx="32" cy="32" r="22" fill="var(--color-slate-450)" />
+    <circle cx="32" cy="32" r="14" fill="var(--color-maroon-600)" />
+    <circle cx="32" cy="32" r="6.5" fill="var(--color-slate-450)" />
+  </svg>
+  {
+    withText && (
+      <span class="leading-none">
+        <span class="block font-[var(--font-display)] text-[1.05rem] font-extrabold tracking-tight text-white">
+          Bullseye Strategies
+        </span>
+        <span class="mt-0.5 block text-[0.6rem] font-medium uppercase tracking-[0.18em] text-slate-350">
+          Strategies LLC
+        </span>
+      </span>
+    )
+  }
+</span>

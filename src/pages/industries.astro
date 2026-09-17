@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { INDUSTRIES } from "../data/site";
+import construction from "../assets/industry_construction.png";
+import manufacturing from "../assets/industry_manufacturing.png";
+import energy from "../assets/industry_energy.png";
+import professional from "../assets/industry_professional.png";
+
+const imageFor: Record<string, ImageMetadata> = {
+  construction,
+  manufacturing,
+  energy,
+  "professional-services": professional,
+};
+---
+
+<Base
+  title="Industries We Serve | Bullseye Strategies"
+  description="Sector expertise in construction and real estate, manufacturing, energy and oilfield services, and professional services — including the KPIs, systems, and risks specific to each."
+  path="/industries"
+>
+  <PageHero
+    eyebrow="Sector Depth"
+    title="We speak your industry's vocabulary on day one."
+    lede="No ramp-up period spent explaining what WIP is, why a field ticket matters, or how standard cost variances behave."
+  />
+
+  <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="space-y-20 sm:space-y-28">
+      {
+        INDUSTRIES.map((ind, i) => (
+          <article
+            id={ind.slug}
+            class="grid scroll-mt-28 items-center gap-10 lg:grid-cols-2 lg:gap-16"
+          >
+            <div
+              class:list={[
+                "overflow-hidden rounded-xl border border-paper-200",
+                i % 2 === 1 && "lg:order-2",
+              ]}
+              data-reveal
+            >
+              <Image
+                src={imageFor[ind.slug]}
+                alt={ind.title}
+                widths={[600, 900]}
+                sizes="(min-width: 1024px) 45vw, 92vw"
+                class="scroll-zoom aspect-[4/3] w-full object-cover"
+              />
+            </div>
+
+            <div data-reveal>
+              <p class="font-[var(--font-display)] text-sm font-extrabold text-crimson-500">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h2 class="mt-2 text-3xl font-extrabold text-navy-900 sm:text-4xl">
+                {ind.title}
+              </h2>
+              <p class="mt-5 text-[1.05rem] leading-relaxed text-navy-800/75">
+                {ind.body}
+              </p>
+              <ul class="mt-7 flex flex-wrap gap-2">
+                {ind.tags.map((t) => (
+                  <li class="rounded-full border border-paper-200 bg-white px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.1em] text-navy-700">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-navy-950 py-20 text-center text-white sm:py-24">
+    <div class="mx-auto max-w-2xl px-5 sm:px-8" data-reveal>
+      <h2 class="text-3xl font-extrabold sm:text-4xl">
+        Don't see your industry?
+      </h2>
+      <p class="mt-5 leading-relaxed text-slate-350">
+        Financial physics apply across every sector. If you have revenue,
+        complexity, and growth ambitions, the underlying problems rhyme.
+      </p>
+      <a
+        href="/contact"
+        class="mt-8 inline-block rounded-full bg-crimson-500 px-8 py-3.5 text-sm font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-crimson-600"
+        >Contact Us</a
+      >
+    </div>
+  </section>
+</Base>

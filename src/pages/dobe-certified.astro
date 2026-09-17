@@ -1,0 +1,95 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { CONTACT } from "../data/site";
+
+const facts = [
+  ["Certifying body", "Disability:IN"],
+  ["Certificate number", "US01708"],
+  ["Valid through", "July 30, 2029"],
+  ["Classification", "Disability-Owned Business Enterprise (DOBE®)"],
+  ["Spend category", "Tier 1 diverse supplier"],
+  ["Legal entity", "Bullseye Strategies, LLC"],
+];
+---
+
+<Base
+  title="DOBE® Certification | Bullseye Strategies"
+  description="Bullseye Strategies, LLC is a Disability-Owned Business Enterprise certified by Disability:IN, certificate US01708. Engagements qualify as Tier 1 diverse supplier spend."
+  path="/dobe-certified"
+>
+  <PageHero
+    eyebrow="Supplier Diversity"
+    title="Certified Disability-Owned Business Enterprise"
+    lede="One of fewer than 1,100 certified DOBE® businesses worldwide."
+  />
+
+  <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+      <div class="space-y-6 text-[1.05rem] leading-relaxed text-navy-800/80">
+        <h2 class="text-2xl font-extrabold text-navy-900 sm:text-3xl" data-reveal>
+          What this means for your procurement team
+        </h2>
+        <p data-reveal>
+          If your organization maintains supplier-diversity commitments,
+          spend with Bullseye Strategies counts toward them as Tier 1 diverse
+          supplier spend&mdash;meaning it is direct spend with a certified
+          diverse business, not second-tier spend flowing through a prime
+          contractor.
+        </p>
+        <p data-reveal>
+          Disability:IN is the recognized third-party certifying body for
+          disability-owned businesses in the United States, and its
+          certification is accepted by the corporate members who set the
+          standard for supplier-diversity reporting. The certification process
+          verifies ownership, operational control, and independence.
+        </p>
+        <p data-reveal>
+          Practically: engaging us lets you meet a genuine consulting need and a
+          diversity target with the same dollar, without the tradeoff that
+          usually accompanies that sentence. We are happy to provide
+          documentation directly to your supplier-diversity or procurement team.
+        </p>
+
+        <div class="rounded-xl border border-paper-200 bg-paper-100 p-7" data-reveal>
+          <h3 class="font-bold text-navy-900">Need documentation?</h3>
+          <p class="mt-2 text-[1rem] leading-relaxed text-navy-800/75">
+            We can supply the certificate, a W-9, and a completed supplier
+            registration package on request&mdash;usually the same day.
+          </p>
+          <a
+            href={`mailto:${CONTACT.email}?subject=DOBE%20certification%20documentation%20request`}
+            class="link-underline mt-4 inline-block text-xs font-bold uppercase tracking-[0.12em] text-navy-900"
+            >Request documentation &rarr;</a
+          >
+        </div>
+      </div>
+
+      <div data-reveal>
+        <div class="overflow-hidden rounded-xl border border-paper-200 bg-white">
+          <img
+            src="/dobe-certificate.jpeg"
+            alt="Disability:IN certificate confirming Bullseye Strategies, LLC as a Disability-Owned Business Enterprise"
+            width="800"
+            height="1035"
+            loading="lazy"
+            class="w-full"
+          />
+        </div>
+
+        <dl class="mt-7 divide-y divide-paper-200 rounded-xl border border-paper-200 bg-white">
+          {
+            facts.map(([k, v]) => (
+              <div class="flex flex-wrap items-baseline justify-between gap-2 px-5 py-3.5">
+                <dt class="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-navy-700/60">
+                  {k}
+                </dt>
+                <dd class="text-sm font-semibold text-navy-900">{v}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
+</Base>

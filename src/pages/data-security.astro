@@ -1,0 +1,345 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { CONTACT } from "../data/site";
+
+/**
+ * v2.0 — rewritten September 2026 from Douglas's confirmed workflow.
+ *
+ * The v1.0 page described files being uploaded into temporary claude.ai web
+ * sessions. That is no longer how engagements run. The current model is
+ * Google Drive-resident: client files stay in Drive, a scoped folder is shared
+ * with the AI connector for processing, and output returns to that same folder.
+ *
+ * Plan confirmed by Douglas 2026-09-17: Anthropic Team plan, i.e. commercial
+ * terms, with model-improvement training contractually excluded. That makes the
+ * affirmative no-training statement accurate, so the flag is set true.
+ * If the plan ever changes, set this back to false before republishing.
+ */
+const TRAINING_CLAIM_VERIFIED = true;
+
+const VERSION = "Version 2.0 · September 2026";
+
+const flow = [
+  {
+    n: "01",
+    title: "Your files arrive in a restricted folder",
+    body: "Client documents are placed in a Google Drive folder that only Douglas Dillard can access. No other client, contractor, or third party has visibility into it.",
+  },
+  {
+    n: "02",
+    title: "Only what is needed moves to the working folder",
+    body: "As each piece of analysis begins, the specific files required are moved into a working folder. Documents not needed for the task at hand never enter the processing environment.",
+  },
+  {
+    n: "03",
+    title: "The working folder is scoped to two identities",
+    body: "That folder is permissioned to exactly two: Douglas, and the AI connector operating under a dedicated Bullseye Strategies account — separate from the email address used for client correspondence.",
+  },
+  {
+    n: "04",
+    title: "Analysis runs and output returns to the same folder",
+    body: "The deliverable is written back into the same permissioned folder. Your data does not travel to a third location, and no copy is left on a personal device.",
+  },
+  {
+    n: "05",
+    title: "Files are removed when the engagement ends",
+    body: "Working files are deleted on completion. Final deliverables remain wherever you have asked us to keep them — your environment, or the Bullseye-managed one.",
+  },
+];
+
+const controls = [
+  {
+    title: "Encryption at rest and in transit",
+    body: "Files remain in Google Drive, which encrypts data at rest and enforces TLS in transit. Nothing is emailed as an unprotected attachment.",
+    verified: true,
+  },
+  {
+    title: "Full-disk encryption",
+    body: "BitLocker is enabled on the workstation used for client work, so a lost or stolen device does not expose client financials.",
+    verified: true,
+  },
+  {
+    title: "Multi-factor authentication",
+    body: "MFA is enforced on every account with access to client data, including the separate account the AI connector runs under.",
+    verified: true,
+  },
+  {
+    title: "Separation of identity",
+    body: "The AI environment authenticates as admin@bullseyestrategies.net — not the address used for client email — so connector access is isolated from day-to-day correspondence.",
+    verified: true,
+  },
+  {
+    title: "Least-privilege folder scoping",
+    body: "Connector access is granted per folder, not across the whole Drive. Files outside the working folder are not reachable.",
+    verified: true,
+  },
+  {
+    title: "Deletion on completion",
+    body: "Working copies are removed at the end of an engagement rather than accumulating indefinitely.",
+    verified: true,
+  },
+];
+
+const deliveryOptions = [
+  {
+    tag: "Option A",
+    title: "Your existing secure storage",
+    body: "If you already run ShareFile, SharePoint, Box, or OneDrive for Business, deliverables are exported into your environment. You keep ownership, audit trail, and permission management.",
+  },
+  {
+    tag: "Option B",
+    title: "Bullseye-managed Google Workspace",
+    body: "For clients without enterprise document storage, we provision a dedicated environment: MFA enforced, a folder per client, link sharing disabled, and access logging on.",
+  },
+];
+
+const verification = [
+  ["Anthropic Trust Center", "https://trust.anthropic.com/"],
+  ["Anthropic Privacy Center", "https://privacy.claude.com/"],
+  ["Google Workspace Security", "https://workspace.google.com/security/"],
+];
+---
+
+<Base
+  title="Data Security & Client Confidentiality | Bullseye Strategies"
+  description="How Bullseye Strategies handles client financial data: restricted Google Drive folders, least-privilege AI connector access, encryption, MFA, and deletion on completion."
+  path="/data-security"
+>
+  <PageHero
+    eyebrow="Data Security & Privacy"
+    title="Where your data goes, and who can reach it"
+    lede="Written for two readers: the CFO deciding whether to send the general ledger, and the IT reviewer who has to sign off on it."
+  />
+
+  <!-- Short version -->
+  <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+      <div data-reveal>
+        <p class="eyebrow">The Short Version</p>
+        <h2
+          class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.4rem]"
+        >
+          Your files stay in one controlled place.
+        </h2>
+        <p class="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-navy-700/50">
+          {VERSION}
+        </p>
+      </div>
+      <div class="space-y-5 text-[1.05rem] leading-relaxed text-navy-800/80" data-reveal>
+        <p>
+          Client documents live in a restricted Google Drive folder. When
+          analysis runs, only the files needed for that task are moved into a
+          working folder permissioned to exactly two identities&mdash;Douglas,
+          and a dedicated AI connector account. Output returns to that same
+          folder. Working copies are deleted when the engagement ends.
+        </p>
+        <p>
+          There is no public link, no unprotected email attachment, and no
+          sprawl of copies across personal devices. If your security team wants
+          to interrogate that, we welcome the call.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section class="bg-paper-100 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="max-w-2xl" data-reveal>
+        <p class="eyebrow">The Process</p>
+        <h2
+          class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.4rem]"
+        >
+          How an engagement handles your data
+        </h2>
+      </div>
+
+      <ol class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {
+          flow.map((f) => (
+            <li
+              class="lift rounded-xl border border-paper-200 bg-white p-7"
+              data-reveal="stagger"
+            >
+              <p class="font-[var(--font-display)] text-2xl font-extrabold text-crimson-500">
+                {f.n}
+              </p>
+              <h3 class="mt-2 text-lg font-bold text-navy-900">{f.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy-800/70">
+                {f.body}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="max-w-2xl" data-reveal>
+      <p class="eyebrow">Controls</p>
+      <h2
+        class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.4rem]"
+      >
+        What is actually in place
+      </h2>
+      <p class="mt-5 leading-relaxed text-navy-800/70">
+        Stated plainly, so your reviewer can map each line to their own control
+        framework.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        controls.map((c) => (
+          <div
+            class="rounded-xl border border-paper-200 bg-white p-7"
+            data-reveal="stagger"
+          >
+            <h3 class="text-base font-bold text-navy-900">{c.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-navy-800/70">{c.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- AI platform / training -->
+  <section class="bg-navy-950 py-20 text-white sm:py-28">
+    <div class="mx-auto max-w-4xl px-5 sm:px-8" data-reveal>
+      <p class="eyebrow">The AI Platform</p>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight sm:text-[2.4rem]">
+        Model training and retention
+      </h2>
+
+      {
+        TRAINING_CLAIM_VERIFIED ? (
+          <div class="mt-6 space-y-5 leading-relaxed text-slate-350">
+            <p>
+              Bullseye Strategies uses Claude, built by Anthropic, under an
+              Anthropic <strong class="font-semibold text-white">Team plan</strong
+              >&mdash;a commercial agreement, not a consumer subscription. Under
+              those terms, client data processed during engagements is
+              <strong class="font-semibold text-white"
+                >not used to train or improve any model</strong
+              >. Model-improvement training is contractually excluded rather
+              than switched off by preference, so it cannot be re-enabled by
+              changing a setting.
+            </p>
+            <p>
+              Anthropic publishes these terms directly, and the distinction
+              matters: consumer plans and commercial plans are governed by
+              different agreements. Your security team is welcome to verify ours
+              against the sources below, and we will provide the plan
+              documentation on request.
+            </p>
+          </div>
+        ) : (
+          <div class="mt-6 space-y-5 leading-relaxed text-slate-350">
+            <p>
+              Bullseye Strategies uses Claude, built by Anthropic, for
+              AI-assisted analysis. Anthropic publishes its data handling terms
+              directly, and those terms differ between consumer and commercial
+              plans &mdash; so rather than paraphrase them here, we point your
+              security team at the source and answer questions about our
+              specific configuration on a call.
+            </p>
+            <p class="rounded-lg border border-crimson-500/30 bg-crimson-500/10 p-5 text-sm text-white">
+              <strong class="font-bold">Internal note, remove before launch:</strong>{" "}
+              confirm the plan type and the &ldquo;Model Improvement&rdquo;
+              privacy setting on the connector account, then set{" "}
+              <code>TRAINING_CLAIM_VERIFIED</code> to <code>true</code> in{" "}
+              <code>src/pages/data-security.astro</code> to publish the
+              affirmative statement.
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Secure delivery -->
+  <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
+    <div class="max-w-2xl" data-reveal>
+      <p class="eyebrow">Secure Delivery</p>
+      <h2
+        class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.4rem]"
+      >
+        Where your results end up
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2">
+      {
+        deliveryOptions.map((o) => (
+          <div
+            class="lift rounded-xl border border-paper-200 bg-white p-8"
+            data-reveal="stagger"
+          >
+            <p class="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-crimson-500">
+              {o.tag}
+            </p>
+            <h3 class="mt-3 text-xl font-bold text-navy-900">{o.title}</h3>
+            <p class="mt-4 leading-relaxed text-navy-800/70">{o.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Verification -->
+  <section class="bg-paper-100 py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div data-reveal>
+          <p class="eyebrow">Verification</p>
+          <h2
+            class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.4rem]"
+          >
+            Don't take our word for it
+          </h2>
+          <p class="mt-5 leading-relaxed text-navy-800/70">
+            Third-party certifications belong to the vendors that hold them and
+            can change. Rather than reprint a list that may drift out of date,
+            we link to the sources your security team can check directly.
+          </p>
+          <ul class="mt-7 space-y-3">
+            {
+              verification.map(([label, href]) => (
+                <li>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener"
+                    class="link-underline text-sm font-semibold text-navy-900"
+                  >
+                    {label} &rarr;
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="rounded-xl border border-paper-200 bg-white p-8" data-reveal>
+          <h3 class="text-xl font-bold text-navy-900">
+            We welcome security review
+          </h3>
+          <p class="mt-4 leading-relaxed text-navy-800/70">
+            If your IT, compliance, or internal audit team needs to assess our
+            data handling before an engagement begins, we will join a call and
+            answer questions directly. That conversation is easier before a
+            contract than after one.
+          </p>
+          <a
+            href={`mailto:${CONTACT.email}?subject=Data%20security%20review`}
+            class="mt-6 inline-block rounded-full bg-crimson-500 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-crimson-600"
+            >Contact Us About Data Security</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

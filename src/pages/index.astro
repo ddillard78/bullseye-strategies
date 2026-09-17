@@ -1,0 +1,331 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import { SERVICES, INDUSTRIES, BLUEPRINT, BOOKING_URL } from "../data/site";
+import hero from "../assets/hero_executives_teaching.png";
+import blueprintArt from "../assets/bullseye_blueprint_methodology_infographic_concept.png";
+
+// Every figure below is traceable to a specific engagement in Douglas's CV.
+// Labels state the baseline so the number cannot be read as more than it is.
+const stats = [
+  { to: 40, prefix: "$", suffix: "M", label: "Revenue scaled from $5M in three years" },
+  { to: 460, prefix: "$", suffix: "M", label: "Capital originated and closed" },
+  { to: 35, suffix: "%", label: "Gross profit margin, up from 19%" },
+  { to: 5, suffix: "-day", label: "Month-end close, down from 15 days" },
+];
+---
+
+<Base
+  title="Bullseye Strategies | Fractional CFO & ERP Consulting for Mid-Market Companies"
+  description="Fractional CFO leadership, ERP implementation, FP&A, and operational discipline for mid-market companies. Certified Disability-Owned Business Enterprise based in Houston, Texas."
+  path="/"
+>
+  <!-- ================= HERO ================= -->
+  <section class="relative isolate overflow-hidden bg-navy-950 pb-24 pt-36 sm:pb-32 sm:pt-44">
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <Image
+        src={hero}
+        alt=""
+        widths={[900, 1400, 1920]}
+        sizes="100vw"
+        class="hero-media h-full w-full object-cover object-center opacity-30"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-navy-950/85 via-navy-950/70 to-navy-950"
+      >
+      </div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <p class="eyebrow" data-reveal>
+        Certified Disability-Owned Business Enterprise
+      </p>
+
+      <h1
+        class="mt-5 max-w-4xl text-4xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl"
+        data-reveal
+      >
+        Fractional CFO leadership for companies that have
+        <span class="text-crimson-400">outgrown their systems.</span>
+      </h1>
+
+      <p
+        class="mt-7 max-w-2xl text-lg leading-relaxed text-slate-350"
+        data-reveal
+      >
+        Most consultants hand you a deck and an invoice. We combine CFO
+        strategy, ERP implementation, and operational discipline&mdash;then stay
+        through execution.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener"
+          class="rounded-full bg-crimson-500 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-crimson-600"
+          >Schedule a Discovery Call</a
+        >
+        <a
+          href="/services"
+          class="rounded-full border border-white/25 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-white/10"
+          >Explore Services</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="border-y border-paper-200 bg-white">
+    <div
+      class="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 sm:px-8 lg:grid-cols-4"
+    >
+      {
+        stats.map((s) => (
+          <div data-reveal="stagger">
+            <p class="font-[var(--font-display)] text-4xl font-extrabold tracking-tight text-navy-900 sm:text-5xl">
+              <span
+                data-count-to={s.to}
+                data-count-prefix={s.prefix ?? ""}
+                data-count-suffix={s.suffix ?? ""}
+              >
+                {s.prefix ?? ""}
+                {s.to}
+                {s.suffix ?? ""}
+              </span>
+            </p>
+            <p class="mt-2 text-sm leading-snug text-navy-700/70">{s.label}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mx-auto max-w-7xl px-5 pb-10 text-xs leading-relaxed text-navy-700/50 sm:px-8">
+      Results achieved by Douglas Dillard in operating roles at companies from
+      $5M to $350M in revenue. Revenue and margin figures are from Moderno
+      Porcelain Works (2021&ndash;2024); capital figures combine $400M+ in
+      construction financing originated and closed at DC Partners with $60M in
+      debt and equity raised at Moderno; close-cycle reduction is from Cosentino
+      North America.
+    </p>
+  </section>
+
+  <!-- ================= POSITIONING ================= -->
+  <section class="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
+    <div class="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+      <div data-reveal>
+        <p class="eyebrow">The Problem</p>
+        <h2
+          class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.6rem]"
+        >
+          The reporting stopped being trustworthy somewhere around $20M.
+        </h2>
+      </div>
+      <div class="space-y-5 text-[1.05rem] leading-relaxed text-navy-800/80" data-reveal>
+        <p>
+          It rarely announces itself. The close slips to eleven days. Two people
+          produce three versions of the same margin number. The ERP you bought
+          three years ago runs as an expensive database while the real decisions
+          happen in a spreadsheet on someone's desktop.
+        </p>
+        <p>
+          That is not a software problem, and a strategy deck will not fix it.
+          It takes someone who can read the balance sheet, configure the system,
+          and sit with your controller through a close. Rare combination. It is
+          why this firm exists.
+        </p>
+        <p class="border-l-2 border-crimson-500 pl-5 font-medium text-navy-900">
+          &ldquo;I built Bullseye to be the partner I always wished I had as a
+          CFO&mdash;someone who understands the numbers but also knows how to fix
+          the engine.&rdquo;
+          <span class="mt-2 block text-sm font-normal text-navy-700/60"
+            >Douglas Dillard, MBA &mdash; Founder</span
+          >
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="bg-paper-100 py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="max-w-2xl" data-reveal>
+        <p class="eyebrow">What We Do</p>
+        <h2
+          class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.6rem]"
+        >
+          Six disciplines, run by one accountable partner.
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-navy-800/70">
+          Engagements usually combine two or three. You are not handed off to a
+          junior team after the sale.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          SERVICES.map((s) => (
+            <a
+              href={`/services#${s.slug}`}
+              class="lift group rounded-xl border border-paper-200 bg-white p-7 hover:border-crimson-500/40 hover:shadow-[0_18px_50px_-24px_rgba(14,27,46,0.4)]"
+              data-reveal="stagger"
+            >
+              <h3 class="text-lg font-bold text-navy-900">{s.title}</h3>
+              <p class="mt-2 text-sm font-semibold text-crimson-600">{s.lede}</p>
+              <p class="mt-4 text-sm leading-relaxed text-navy-800/70">
+                {s.body}
+              </p>
+              <span class="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-navy-900">
+                Learn more
+                <svg
+                  viewBox="0 0 16 16"
+                  class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 8h11M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BLUEPRINT (sticky scroll) ================= -->
+  <section class="bg-navy-950 py-24 text-white sm:py-32">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="max-w-2xl" data-reveal>
+        <p class="eyebrow">The Methodology</p>
+        <h2 class="mt-4 text-3xl font-extrabold leading-tight sm:text-[2.6rem]">
+          The Bullseye Blueprint
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-slate-350">
+          Five phases, run in order. Each produces a deliverable you keep, whether
+          or not you continue.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div class="hidden lg:block">
+          <div class="sticky top-32">
+            <Image
+              src={blueprintArt}
+              alt="The five-phase Bullseye Blueprint methodology"
+              widths={[500, 800]}
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              class="scroll-zoom w-full rounded-xl border border-white/10"
+            />
+          </div>
+        </div>
+
+        <ol class="space-y-4">
+          {
+            BLUEPRINT.map((step) => (
+              <li
+                class="lift rounded-xl border border-white/10 bg-white/[0.03] p-7 hover:border-crimson-500/50"
+                data-reveal="stagger"
+              >
+                <div class="flex items-baseline gap-4">
+                  <span class="font-[var(--font-display)] text-2xl font-extrabold text-crimson-500">
+                    {step.n}
+                  </span>
+                  <h3 class="text-xl font-bold">{step.title}</h3>
+                </div>
+                <p class="mt-3 leading-relaxed text-slate-350">{step.body}</p>
+                <p class="mt-3 text-sm italic text-slate-450">{step.detail}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INDUSTRIES ================= -->
+  <section class="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
+    <div class="max-w-2xl" data-reveal>
+      <p class="eyebrow">Sector Depth</p>
+      <h2
+        class="mt-4 text-3xl font-extrabold leading-tight text-navy-900 sm:text-[2.6rem]"
+      >
+        We speak your industry's vocabulary on day one.
+      </h2>
+      <p class="mt-5 text-[1.05rem] leading-relaxed text-navy-800/70">
+        No ramp-up spent explaining what WIP or a field ticket is.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-5 md:grid-cols-2">
+      {
+        INDUSTRIES.map((ind) => (
+          <div
+            class="lift rounded-xl border border-paper-200 bg-white p-8 hover:border-crimson-500/40"
+            data-reveal="stagger"
+          >
+            <h3 class="text-xl font-bold text-navy-900">{ind.title}</h3>
+            <p class="mt-3 leading-relaxed text-navy-800/70">{ind.body}</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {ind.tags.map((t) => (
+                <li class="rounded-full bg-paper-100 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.1em] text-navy-700">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ================= DOBE ================= -->
+  <section class="bg-maroon-700 py-20 text-white sm:py-24">
+    <div
+      class="mx-auto flex max-w-7xl flex-col gap-10 px-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between"
+    >
+      <div class="max-w-2xl" data-reveal>
+        <p
+          class="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white/70"
+        >
+          Supplier Diversity
+        </p>
+        <h2 class="mt-4 text-3xl font-extrabold leading-tight sm:text-[2.4rem]">
+          Engaging us counts as Tier 1 diverse supplier spend.
+        </h2>
+        <p class="mt-5 leading-relaxed text-white/80">
+          Certified by Disability:IN as a Disability-Owned Business
+          Enterprise&mdash;one of fewer than 1,100 worldwide. If you carry
+          supplier-diversity or ESG targets, this engagement counts toward them
+          with no tradeoff on the work.
+        </p>
+      </div>
+      <a
+        href="/dobe-certified"
+        class="shrink-0 self-start rounded-full bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-[0.1em] text-maroon-700 transition-colors hover:bg-paper-100 lg:self-auto"
+        data-reveal>View Certification</a
+      >
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="rings bg-navy-900 py-24 text-center text-white sm:py-32">
+    <div class="mx-auto max-w-2xl px-5 sm:px-8" data-reveal>
+      <h2 class="text-3xl font-extrabold leading-tight sm:text-[2.6rem]">
+        Ready to hit your target?
+      </h2>
+      <p class="mt-5 text-[1.05rem] leading-relaxed text-slate-350">
+        45 minutes, no deck, and an honest read on whether we can help.
+      </p>
+      <a
+        href={BOOKING_URL}
+        target="_blank"
+        rel="noopener"
+        class="mt-9 inline-block rounded-full bg-crimson-500 px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-crimson-600"
+        >Start the Conversation</a
+      >
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,163 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { SERVICES, BOOKING_URL } from "../data/site";
+import consultImg from "../assets/services_production_consultant.png";
+
+const differentiators = [
+  {
+    title: "Rapid deployment",
+    body: "Findings inside three weeks, not a three-month discovery phase billed by the hour.",
+  },
+  {
+    title: "Measured against a baseline",
+    body: "We capture the starting numbers in Diagnose so the improvement is arguable with evidence.",
+  },
+  {
+    title: "One accountable partner",
+    body: "The person who scopes the work is the person who does the work.",
+  },
+  {
+    title: "Capability stays in-house",
+    body: "The goal is a team that no longer needs us, not a retainer that never ends.",
+  },
+];
+---
+
+<Base
+  title="Consulting Services: Fractional CFO, ERP, FP&A | Bullseye Strategies"
+  description="Fractional CFO, ERP implementation, FP&A and analytics, SOP development, risk advisory, and practical AI integration for mid-market companies."
+  path="/services"
+>
+  <PageHero
+    eyebrow="What We Do"
+    title="Six disciplines. One accountable partner."
+    lede="Most engagements combine two or three of these. Each is scoped to a deliverable you keep, with a defined end."
+  />
+
+  <section class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="space-y-5">
+      {
+        SERVICES.map((s, i) => (
+          <article
+            id={s.slug}
+            class="lift scroll-mt-28 rounded-xl border border-paper-200 bg-white p-8 hover:border-crimson-500/40 sm:p-10"
+            data-reveal
+          >
+            <div class="grid gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-12">
+              <div>
+                <p class="font-[var(--font-display)] text-sm font-extrabold text-crimson-500">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h2 class="mt-2 text-2xl font-extrabold text-navy-900 sm:text-3xl">
+                  {s.title}
+                </h2>
+                <p class="mt-3 font-semibold text-crimson-600">{s.lede}</p>
+              </div>
+              <div>
+                <p class="leading-relaxed text-navy-800/75">{s.body}</p>
+                <ul class="mt-6 grid gap-2.5 sm:grid-cols-2">
+                  {s.points.map((p) => (
+                    <li class="flex gap-2.5 text-sm text-navy-800/80">
+                      <svg
+                        viewBox="0 0 16 16"
+                        class="mt-1 h-3.5 w-3.5 shrink-0 text-crimson-500"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                      >
+                        <path
+                          d="M3 8.5l3.5 3.5L13 4.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener"
+                  class="link-underline mt-7 inline-block text-xs font-bold uppercase tracking-[0.12em] text-navy-900"
+                >
+                  Discuss this service &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="bg-navy-950 py-20 text-white sm:py-28">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
+        <div>
+          <p class="eyebrow" data-reveal>Why Clients Choose Us</p>
+          <h2
+            class="mt-4 text-3xl font-extrabold leading-tight sm:text-[2.6rem]"
+            data-reveal
+          >
+            Not just advice. Execution.
+          </h2>
+          <p class="mt-5 leading-relaxed text-slate-350" data-reveal>
+            Traditional consultants deliver a recommendation and leave the hard
+            part&mdash;making it real inside your business, with your people and
+            your systems&mdash;to you. That handoff is where most of the value
+            leaks out. We stay through it.
+          </p>
+
+          <div class="mt-10 grid gap-5 sm:grid-cols-2">
+            {
+              differentiators.map((d) => (
+                <div
+                  class="rounded-lg border border-white/10 bg-white/[0.03] p-5"
+                  data-reveal="stagger"
+                >
+                  <h3 class="font-bold">{d.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-350">
+                    {d.body}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-xl border border-white/10" data-reveal>
+          <Image
+            src={consultImg}
+            alt="Consulting engagement in a production environment"
+            widths={[600, 900]}
+            sizes="(min-width: 1024px) 40vw, 90vw"
+            class="scroll-zoom w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper-100 py-20 sm:py-24">
+    <div class="mx-auto max-w-3xl px-5 text-center sm:px-8" data-reveal>
+      <h2 class="text-3xl font-extrabold text-navy-900 sm:text-4xl">
+        Need something that doesn't fit a box?
+      </h2>
+      <p class="mt-5 leading-relaxed text-navy-800/70">
+        Most engagements are hybrids&mdash;fractional CFO support running
+        alongside a defined project like an ERP implementation or an insurance
+        restructuring. Tell us the problem and we will scope it honestly,
+        including telling you if we are the wrong fit.
+      </p>
+      <a
+        href="/contact"
+        class="mt-8 inline-block rounded-full bg-crimson-500 px-8 py-3.5 text-sm font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-crimson-600"
+        >Get in Touch</a
+      >
+    </div>
+  </section>
+</Base>

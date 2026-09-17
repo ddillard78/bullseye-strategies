@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import { NAV } from "../data/site";
+---
+
+<Base
+  title="Page Not Found | Bullseye Strategies"
+  description="The page you were looking for could not be found."
+  path="/404"
+>
+  <section class="rings bg-navy-950 px-5 py-40 text-center text-white sm:px-8">
+    <p class="eyebrow">Error 404</p>
+    <h1 class="mt-5 text-4xl font-extrabold sm:text-6xl">
+      That page isn't here.
+    </h1>
+    <p class="mx-auto mt-6 max-w-lg leading-relaxed text-slate-350">
+      The link may be out of date, or the page may have moved. Everything else
+      is one click away.
+    </p>
+    <nav class="mt-10 flex flex-wrap justify-center gap-3" aria-label="Recovery">
+      <a
+        href="/"
+        class="rounded-full bg-crimson-500 px-6 py-3 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-crimson-600"
+        >Home</a
+      >
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-full border border-white/25 px-6 py-3 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-white/10"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </section>
+</Base>

@@ -1,0 +1,30 @@
+# Render Blueprint — static site, free tier.
+# Create the service from this file: Render Dashboard → New → Blueprint.
+services:
+  - type: web
+    runtime: static
+    name: bullseye-strategies
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+      # Fingerprinted build assets are safe to cache forever
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /dobe-certification
+        destination: /dobe-certified
