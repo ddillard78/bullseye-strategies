@@ -5,6 +5,14 @@
 
 export const BOOKING_URL = "https://calendar.app.google/BFe9tYcmiXYqoqnj9";
 
+/**
+ * NOTE: these addresses are still on bullseyestrategies.net, which expires
+ * 2026-12-08. They stay here deliberately — they are the addresses that
+ * currently receive mail. Switch them to @bullseyestrategiesllc.com only once
+ * that domain has been added to Google Workspace and the mailboxes are live,
+ * otherwise the site would advertise addresses that bounce. The data-security
+ * page also names admin@bullseyestrategies.net and must change at the same time.
+ */
 export const CONTACT = {
   email: "douglas@bullseyestrategies.net",
   altEmail: "info@bullseyestrategies.net",
