@@ -12,6 +12,7 @@ import {
   PROOF,
 } from "../data/site";
 import doug from "../assets/Doug_Dillard_1765144821802.jpeg";
+import racing from "../assets/doug_racing_houston.jpg";
 
 const values = [
   {
@@ -116,21 +117,47 @@ const values = [
           CFO&mdash;someone who understands the numbers but also knows how to fix
           the engine.&rdquo;
         </blockquote>
+      </div>
+    </div>
+  </section>
 
-        <div class="rounded-xl border border-paper-200 bg-paper-100 p-7" data-reveal>
-          <h2 class="text-lg font-bold text-navy-900">
-            Fifty marathons, and what they have to do with your close process
+  <!-- ADAPTIVE ATHLETE -->
+  <section class="bg-navy-950 py-20 text-white sm:py-28">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div class="overflow-hidden rounded-xl border border-white/10" data-reveal>
+          <Image
+            src={racing}
+            alt="Douglas Dillard racing in his wheelchair at the UTHealth Houston Half Marathon, wearing a Bee Abled jersey"
+            widths={[500, 800]}
+            sizes="(min-width: 1024px) 32vw, 90vw"
+            class="scroll-zoom w-full object-cover"
+          />
+        </div>
+
+        <div data-reveal>
+          <p class="eyebrow">Why This Is On The Page</p>
+          <h2 class="mt-4 text-3xl font-extrabold leading-tight sm:text-[2.4rem]">
+            Fifty marathons, and what they have to do with your close process.
           </h2>
-          <p class="mt-3 text-[1rem] leading-relaxed text-navy-800/75">
-            Fifty-plus marathons and endurance events as an adaptive athlete,
-            including Boston, and a 2023 Houston Sports Hall of Fame Honoree as
-            Inspiring Adaptive Athlete of the Year. It is here for a reason that
-            has little to do with fitness: the discipline that finishes a
-            marathon is the discipline that closes the books on the fifth
-            business day, every month, without heroics. Both are won in the
-            boring middle, after motivation wears off. That is the temperament
-            being hired.
-          </p>
+          <div class="mt-6 space-y-5 text-[1.05rem] leading-relaxed text-slate-350">
+            <p>
+              Fifty-plus marathons and endurance events as an adaptive athlete,
+              including Boston, and a 2023 Houston Sports Hall of Fame Honoree
+              as Inspiring Adaptive Athlete of the Year.
+            </p>
+            <p>
+              It is here for a reason that has little to do with fitness. The
+              discipline that finishes a marathon is the discipline that closes
+              the books on the fifth business day, every month, without heroics.
+              Both are won in the boring middle, long after motivation has worn
+              off. That is the temperament being hired.
+            </p>
+            <p class="border-l-2 border-crimson-500 pl-5 text-base text-white/80">
+              The jersey in that photo is Bee Abled, the 501(c)(3) where Douglas
+              serves as Board Member and Treasurer.
+            </p>
+          </div>
         </div>
       </div>
     </div>
